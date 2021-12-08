@@ -1,0 +1,31 @@
+mod print;
+mod vals;
+mod types;
+mod strings;
+mod tuples;
+mod arrays;
+mod vectors;
+mod condition;
+mod loops;
+mod funcs;
+mod point_a_ref;
+mod structs;
+mod enums;
+mod cli;
+fn main() {
+    print::stall();
+    vals::stall();
+    types::stall();
+    strings::stall();
+    tuples::stall();
+    arrays::stall();
+    vectors::stall();
+    condition::stall();
+    loops::stall();
+    funcs::stall();
+    point_a_ref::stall();
+    structs::stall();
+    enums::stall();
+    cli::stall();
+    println!("now you can check all the small sections");
+}
