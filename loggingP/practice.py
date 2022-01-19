@@ -11,8 +11,14 @@ def signalhandle1(signum, frame):
   log_level = logging.DEBUG
 def signalhandle2(signum, frame):
   log_level = logging.WARNING
+def sigrap(signum, stack):
+  None
 signal.signal(signal.SIGUSR1, signalhandle1)
 signal.signal(signal.SIGUSR2, signalhandle2)
+signal.signal(signal.SIGALRM, sigrap)
+while 1:
+  signal.alarm(1)
+  signal.pause()
 def read(filename, mandatorykeylist, cfg):
  for line in open(filename):
   logging.debug('->' + line[:-1])
