@@ -1,12 +1,18 @@
 import logging
 import yaml
+import signal
 from sys import argv
 log_level = logging.INFO
 if '--debug' in argv:
  log_level = logging.DEBUG
 logging.basicConfig(format='%(asctime)s - %(message)s')
 logging.getLogger().setLevel(log_level)
-
+def signalhandle1(signum, frame):
+  log_level = logging.DEBUG
+def signalhandle2(signum, frame):
+  log_level = logging.WARNING
+signal.signal(signal.SIGUSR1, signalhandle1)
+signal.signal(signal.SIGUSR2, signalhandle2)
 def read(filename, mandatorykeylist, cfg):
  for line in open(filename):
   logging.debug('->' + line[:-1])
@@ -21,9 +27,9 @@ def read(filename, mandatorykeylist, cfg):
   if mandatory not in cfg.keys():
    return False, 'could not found " ' + mandatory + ' " '
  return True, cfg
-status, result = read_config('my-test.kv', ['first-name', 'last-name'], {'middlename': ''})
+status, result = read.config('my-test.kv', ['first-name', 'last-name'], {'middlename': ''})
 if not status:
- logging.error(result)
+ logging.warning(result)
  exit(1)
 cfg = result
 logging.info('your name is ' + cfg['first-name'] + '  ' + cfg['middle-name'] + '  ' + cfg['last-name'])
