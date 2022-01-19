@@ -10,7 +10,7 @@ def read(filename, mandatorykeylist, cfg):
  for line in open(filename):
   logging.debug('->' + line[:-1])
   if line.strip() == '':
-	 continue
+    continue
   left, right = line.split('=', 1)
   logging.debug('left' + left + ' right' + right[:-1])
   key, value = left.strip(), right.strip()
