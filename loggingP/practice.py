@@ -1,4 +1,5 @@
 import logging
+import yaml
 from sys import argv
 log_level = logging.INFO
 if '--debug' in argv:
