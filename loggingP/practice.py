@@ -33,7 +33,7 @@ def read(filename, mandatorykeylist, cfg):
   if mandatory not in cfg.keys():
    return False, 'could not found " ' + mandatory + ' " '
  return True, cfg
-status, result = read.config('my-test.kv', ['first-name', 'last-name'], {'middlename': ''})
+status, result = read('my-test.kv', ['first-name', 'last-name'], {'middlename': ''})
 if not status:
  logging.warning(result)
  exit(1)
