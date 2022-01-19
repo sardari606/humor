@@ -1,0 +1,7 @@
+run :
+  python practice.py
+yaml :
+  pip install PyYaml
+help
+  @ echo "run: run the program"
+  @ echo "yaml: installing yaml lib for python" 
